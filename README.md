@@ -9,7 +9,9 @@ make up
 ```bash
 make test
 
-cd src
+# OR
 
+make cli
+cd src
 ./vendor/bin/phpunit
 ```
