@@ -12,6 +12,5 @@ make test
 # OR
 
 make cli
-cd src
 ./vendor/bin/phpunit
 ```
