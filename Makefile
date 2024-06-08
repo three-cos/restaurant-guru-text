@@ -10,4 +10,4 @@ cli:
 	docker-compose ${DOCKER_COMPOSE_FLAGS} exec --user=web php bash || true
 
 test:
-	docker-compose ${DOCKER_COMPOSE_FLAGS} exec --user=web php php ./src/vendor/bin/phpunit -c ./src/phpunit.xml
+	docker-compose ${DOCKER_COMPOSE_FLAGS} exec --user=web php php ./vendor/bin/phpunit -c ./phpunit.xml
