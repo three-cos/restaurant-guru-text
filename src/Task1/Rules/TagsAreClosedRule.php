@@ -8,21 +8,21 @@ class TagsAreClosedRule implements RuleInterface
     {
         preg_match_all('/<\/?[\w\s="]+\/?>/', $post, $tagMatches);
 
-        $tagStack = [];
+        $openTagStack = [];
 
         foreach ($tagMatches[0] as $tag) {
             if (preg_match('/<\/(?<tag>\w*)>/', $tag, $closeMatch)) {
-                if (empty($tagStack) || array_pop($tagStack) !== $closeMatch['tag']) {
+                if (empty($openTagStack) || array_pop($openTagStack) !== $closeMatch['tag']) {
                     return false;
                 }
             } elseif (! preg_match('/\/>$/', $tag)) {
                 if (preg_match('/<(?<tag>\w*)/', $tag, $openMatch)) {
-                    $tagStack[] = $openMatch['tag'];
+                    $openTagStack[] = $openMatch['tag'];
                 }
             }
         }
 
-        if (! empty($tagStack)) {
+        if (! empty($openTagStack)) {
             return false;
         }
 
