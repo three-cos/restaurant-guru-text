@@ -6,7 +6,7 @@ class TagsAreClosedRule implements RuleInterface
 {
     public function isValid(string $post): bool
     {
-        preg_match_all('/<\/?[\w\s="]+\/?>/', $post, $tagMatches);
+        preg_match_all('/<\/?[\w\s=":\.\/]+\/?>/', $post, $tagMatches);
 
         $openTagStack = [];
 

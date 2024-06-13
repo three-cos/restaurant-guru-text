@@ -50,6 +50,7 @@ class RulesTest extends TestCase
     public static function closedTagsProvider(): array
     {
         return [
+            ['<a href=""http://aaa.com"" title=""aaaa bbb""><strong>lala</strong></a> all is good <i> test</i>', true],
             ['<a></a>', true],
             ['<a><img /></a>', true],
             ['<a><a></a></a>', true],
@@ -67,6 +68,7 @@ class RulesTest extends TestCase
     public static function whitelistTagsProvider(): array
     {
         return [
+            ['<a href=""http://aaa.com"" title=""aaaa bbb""><strong>lala</strong></a> all is good <i> test</i>', true],
             ['<a></a>', true],
             ['<a href=""></a>', true],
             ['<code></code>', true],
@@ -82,6 +84,7 @@ class RulesTest extends TestCase
     public static function allowedAttributesProvider(): array
     {
         return [
+            ['<a href=""http://aaa.com"" title=""aaaa bbb""><strong>lala</strong></a> all is good <i> test</i>', true],
             ['<a href="" title=""></a>', true],
             ['<a href=""></a>', true],
             ['<a title=""></a>', true],
